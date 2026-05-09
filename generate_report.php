@@ -40,7 +40,7 @@ while ($v = $visitResult->fetch_assoc()) {
     $visits[] = $v;
 }
 
-$baseUrl = "http://192.168.1.17/hospital/";
+$baseUrl = "http://tsm.ecssofttech.com/Gaytree/hospital/";
 
 ob_end_clean();
 echo json_encode([
