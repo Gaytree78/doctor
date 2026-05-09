@@ -34,7 +34,8 @@ $emergency   = trim($_POST['emergency']   ?? '');
 $symptoms    = trim($_POST['symptoms']    ?? '');
 $diagnosis   = trim($_POST['diagnosis']   ?? '');
 $notes       = trim($_POST['notes']       ?? '');
-$abha        = trim($_POST['abha_number'] ?? '');
+$abha = trim($_POST['abha_number'] ?? '');
+$abha = ($abha === '') ? null : $abha;
 $fee         = (int)($_POST['fee']        ?? 100);
 
 if (empty($name) || empty($age) || empty($mobile)) {
@@ -80,9 +81,8 @@ $stmt->bind_param(
     "sissssssssssssi",
     $name, $age, $gender, $blood_group, $mobile,
     $address, $emergency, $symptoms, $diagnosis,
-    $notes, $abha, $general, $blood, $urine, $fee
+    $notes, $abha, $general, $blood, $urine, $fee  // $abha will be null — MySQLi handles this correctly
 );
-
 if (!$stmt->execute()) {
     ob_end_clean();
     echo json_encode(["status" => "error", "message" => "Execute failed: " . $stmt->error]);
