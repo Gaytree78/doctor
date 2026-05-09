@@ -28,7 +28,7 @@ if (!$row) {
     exit;
 }
 
-$baseUrl = "http://192.168.1.19/hospital/";
+$baseUrl = "http://tsm.ecssofttech.com/Gaytree/hospital/";
 
 // ── Latest blood/urine from patient_visits (most recent upload) ──
 // This ensures the REPORTS section always shows the latest uploaded
