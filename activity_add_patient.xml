@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F4F7"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top App Bar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#FFFFFF"
+            android:elevation="2dp"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="New Patient"
+            app:titleTextColor="#1A1A2E"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Title">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_check"
+                android:contentDescription="Save"
+                app:tint="#2563EB" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <!-- ─────────────────────────────────────── -->
+        <!-- SECTION: PERSONAL INFORMATION           -->
+        <!-- ─────────────────────────────────────── -->
+
+        <!-- Section Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_person_outline"
+                android:contentDescription="Personal Information Icon"
+                app:tint="#2563EB" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="PERSONAL INFORMATION"
+                android:textColor="#2563EB"
+                android:textSize="11sp"
+                android:letterSpacing="0.1"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium" />
+
+        </LinearLayout>
+
+        <!-- Personal Information Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Row: Patient ID + Gender -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Patient ID (Auto-generated — Display Only) -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Patient ID"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:fontFamily="sans-serif"
+                            android:paddingBottom="4dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/bg_input_field"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="#"
+                                android:textColor="#6B7280"
+                                android:textSize="14sp"
+                                android:paddingEnd="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvPatientId"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Auto Generated"
+                                android:textColor="#9CA3AF"
+                                android:textSize="14sp"
+                                android:fontFamily="sans-serif" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Gender -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gender"
+                                android:textColor="#6B7280"
+                                android:textSize="12sp"
+                                android:fontFamily="sans-serif"
+                                android:paddingBottom="4dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" *"
+                                android:textColor="#EF4444"
+                                android:textSize="12sp"
+                                android:paddingBottom="4dp" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/spinnerGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_spinner"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="8dp"
+                            android:entries="@array/gender_options"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="12dp" />
+
+                <!-- Full Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Full Name"
+                        android:textColor="#6B7280"
+                        android:textSize="12sp"
+                        android:paddingBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" *"
+                        android:textColor="#EF4444"
+                        android:textSize="12sp"
+                        android:paddingBottom="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_input_field"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_person_outline"
+                        android:contentDescription="Name Icon"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#9CA3AF" />
+
+                    <EditText
+                        android:id="@+id/etFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="e.g. Johnathan Doe"
+                        android:textColorHint="#9CA3AF"
+                        android:textColor="#1A1A2E"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:inputType="textPersonName"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="12dp" />
+
+                <!-- Row: Age + Blood Group -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Age -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Age (Years)"
+                                android:textColor="#6B7280"
+                                android:textSize="12sp"
+                                android:paddingBottom="4dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" *"
+                                android:textColor="#EF4444"
+                                android:textSize="12sp"
+                                android:paddingBottom="4dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/bg_input_field"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_calendar"
+                                android:contentDescription="Age Icon"
+                                android:layout_marginEnd="8dp"
+                                app:tint="#9CA3AF" />
+
+                            <EditText
+                                android:id="@+id/etAge"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="45"
+                                android:textColor="#1A1A2E"
+                                android:textSize="14sp"
+                                android:background="@null"
+                                android:inputType="number"
+                                android:singleLine="true" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Blood Group -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Blood Group"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:paddingBottom="4dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/bg_input_field"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_bloodtype"
+                                android:contentDescription="Blood Group Icon"
+                                android:layout_marginEnd="8dp"
+                                app:tint="#9CA3AF" />
+
+                            <Spinner
+                                android:id="@+id/spinnerBloodGroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:entries="@array/blood_group_options"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="12dp" />
+
+                <!-- ─────────────────────────────────────── -->
+                <!-- [NEW] ABHA Number Field                 -->
+                <!-- DB: patients.abha_number VARCHAR(17)    -->
+                <!-- Optional — nullable column              -->
+                <!-- ─────────────────────────────────────── -->
+
+                <!-- ABHA Number Label Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ABHA Number"
+                        android:textColor="#6B7280"
+                        android:textSize="12sp"
+                        android:paddingBottom="4dp" />
+
+                    <!-- Optional Badge -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Optional"
+                        android:textColor="#6B7280"
+                        android:textSize="11sp"
+                        android:background="@drawable/bg_optional_badge"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp" />
+
+                </LinearLayout>
+
+                <!-- ABHA Number Input -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_input_field_abha"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_badge"
+                        android:contentDescription="ABHA Number Icon"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#2563EB" />
+
+                    <EditText
+                        android:id="@+id/etAbhaNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="14-digit ABHA No. e.g. 12-3456-7890-1234"
+                        android:textColorHint="#9CA3AF"
+                        android:textColor="#1A1A2E"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="17"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+                <!-- END [NEW] ABHA Number -->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Spacer -->
+        <View android:layout_width="match_parent" android:layout_height="16dp" />
+
+        <!-- ─────────────────────────────────────── -->
+        <!-- SECTION: CONTACT DETAILS                -->
+        <!-- ─────────────────────────────────────── -->
+
+        <!-- Section Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_phone"
+                android:contentDescription="Contact Details Icon"
+                app:tint="#2563EB" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="CONTACT DETAILS"
+                android:textColor="#2563EB"
+                android:textSize="11sp"
+                android:letterSpacing="0.1"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium" />
+
+        </LinearLayout>
+
+        <!-- Contact Details Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Mobile Number -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile Number"
+                        android:textColor="#6B7280"
+                        android:textSize="12sp"
+                        android:paddingBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" *"
+                        android:textColor="#EF4444"
+                        android:textSize="12sp"
+                        android:paddingBottom="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_input_field"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_phone"
+                        android:contentDescription="Phone Icon"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#9CA3AF" />
+
+                    <EditText
+                        android:id="@+id/etMobileNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="+1 (555) 000-0000"
+                        android:textColorHint="#9CA3AF"
+                        android:textColor="#1A1A2E"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:inputType="phone"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="12dp" />
+
+                <!-- Emergency Contact -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Emergency Contact"
+                    android:textColor="#6B7280"
+                    android:textSize="12sp"
+                    android:paddingBottom="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_input_field"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_info_outline"
+                        android:contentDescription="Emergency Contact Icon"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#9CA3AF" />
+
+                    <EditText
+                        android:id="@+id/etEmergencyContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Name / Relationship / Phone"
+                        android:textColorHint="#9CA3AF"
+                        android:textColor="#1A1A2E"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+                <!-- Emergency Contact -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Fees"
+                    android:textColor="#6B7280"
+                    android:textSize="12sp"
+                    android:paddingBottom="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_input_field"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_info_outline"
+                        android:contentDescription="Emergency Contact Icon"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#9CA3AF" />
+
+                    <EditText
+                        android:id="@+id/etFees"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Enter Fees"
+                        android:textColorHint="#9CA3AF"
+                        android:textColor="#1A1A2E"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="12dp" />
+
+                <!-- Home Address -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home Address"
+                    android:textColor="#6B7280"
+                    android:textSize="12sp"
+                    android:paddingBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/etHomeAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:hint="Street, City, State, Zip Code"
+                    android:textColorHint="#9CA3AF"
+                    android:textColor="#1A1A2E"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_input_field"
+                    android:padding="12dp"
+                    android:inputType="textMultiLine"
+                    android:gravity="top"
+                    android:lines="3"
+                    android:maxLines="5"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Spacer -->
+        <View android:layout_width="match_parent" android:layout_height="16dp" />
+
+        <!-- ─────────────────────────────────────── -->
+        <!-- SECTION: CLINICAL DETAILS               -->
+        <!-- ─────────────────────────────────────── -->
+
+        <!-- Section Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_medical_services"
+                android:contentDescription="Clinical Details Icon"
+                app:tint="#2563EB" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Treatment"
+                android:textColor="#2563EB"
+                android:textSize="11sp"
+                android:letterSpacing="0.1"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium" />
+
+        </LinearLayout>
+
+        <!-- Clinical Details Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Symptoms -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Symptoms"
+                        android:textColor="#374151"
+                        android:textSize="13sp"
+                        android:paddingBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" *"
+                        android:textColor="#EF4444"
+                        android:textSize="13sp"
+                        android:paddingBottom="6dp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/etSymptoms"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:hint="Patient's current complaints..."
+                    android:textColorHint="#9CA3AF"
+                    android:textColor="#1A1A2E"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_input_field"
+                    android:padding="12dp"
+                    android:inputType="textMultiLine"
+                    android:gravity="top|start"
+                    android:lines="3"
+                    android:maxLines="6"
+                    android:scrollbars="vertical" />
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="14dp" />
+
+                <!-- Primary Diagnosis / Disease -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Primary Diagnosis / Disease"
+                    android:textColor="#374151"
+                    android:textSize="13sp"
+                    android:paddingBottom="6dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_input_field"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_info_outline"
+                        android:contentDescription="Diagnosis Icon"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#9CA3AF" />
+
+                    <EditText
+                        android:id="@+id/etPrimaryDiagnosis"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="e.g. Chronic Hypertension"
+                        android:textColorHint="#9CA3AF"
+                        android:textColor="#1A1A2E"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="14dp" />
+
+                <!-- Clinical Notes -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Treatment"
+                    android:textColor="#374151"
+                    android:textSize="13sp"
+                    android:paddingBottom="6dp" />
+
+                <EditText
+                    android:id="@+id/etClinicalNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:hint="Add additional medical context..."
+                    android:textColorHint="#9CA3AF"
+                    android:textColor="#1A1A2E"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_input_field"
+                    android:padding="12dp"
+                    android:inputType="textMultiLine"
+                    android:gravity="top|start"
+                    android:lines="3"
+                    android:maxLines="6"
+                    android:scrollbars="vertical" />
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="14dp" />
+
+                <!-- Attachments Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Attachments"
+                        android:textColor="#374151"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Optional"
+                        android:textColor="#6B7280"
+                        android:textSize="11sp"
+                        android:background="@drawable/bg_optional_badge"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp" />
+
+                </LinearLayout>
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="10dp" />
+
+                <!-- Upload Drop Zone (general) -->
+                <LinearLayout
+                    android:id="@+id/layoutUploadZone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_upload_zone"
+                    android:padding="24dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_attach_file"
+                        android:contentDescription="Attach File Icon"
+                        app:tint="#9CA3AF" />
+
+                    <View android:layout_width="match_parent" android:layout_height="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload Lab Reports or Photos"
+                        android:textColor="#374151"
+                        android:textSize="13sp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PDF, JPG up to 10MB"
+                        android:textColor="#9CA3AF"
+                        android:textSize="11sp"
+                        android:gravity="center"
+                        android:layout_marginTop="2dp" />
+
+                    <View android:layout_width="match_parent" android:layout_height="12dp" />
+
+                    <Button
+                        android:id="@+id/btnBrowseFiles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Browse Files"
+                        android:textColor="#374151"
+                        android:textSize="13sp"
+                        android:background="@drawable/bg_browse_button"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:elevation="0dp"
+                        android:stateListAnimator="@null" />
+
+                </LinearLayout>
+
+                <!-- Spacer -->
+                <View android:layout_width="match_parent" android:layout_height="14dp" />
+
+                <!-- ─────────────────────────────────────────── -->
+                <!-- [NEW] Report Photo Uploads                  -->
+                <!-- DB: patient_reports table                   -->
+                <!--   - patient_id (FK)                         -->
+                <!--   - report_type ENUM('BLOOD','URINE')       -->
+                <!--   - file_path VARCHAR(512)                  -->
+                <!--   - file_name VARCHAR(255)                  -->
+                <!--   - uploaded_at TIMESTAMP                   -->
+                <!-- Both fields are optional / nullable         -->
+                <!-- ─────────────────────────────────────────── -->
+
+                <!-- Report Photos Sub-Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Report Photos"
+                        android:textColor="#374151"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Optional"
+                        android:textColor="#6B7280"
+                        android:textSize="11sp"
+                        android:background="@drawable/bg_optional_badge"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp" />
+
+                </LinearLayout>
+
+                <!-- Side-by-side Blood + Urine upload zones -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Blood Report Upload -->
+                    <LinearLayout
+                        android:id="@+id/layoutBloodReportUpload"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_upload_zone_blood"
+                        android:padding="16dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_science"
+                            android:contentDescription="Blood Report Icon"
+                            app:tint="#EF4444" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Blood Report"
+                            android:textColor="#374151"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="JPG, PNG, PDF · 10MB"
+                            android:textColor="#9CA3AF"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:layout_marginTop="2dp" />
+
+                        <!-- Preview thumbnail (hidden until file selected) -->
+                        <ImageView
+                            android:id="@+id/imgBloodReportPreview"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="8dp"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/bg_input_field"
+                            android:visibility="gone"
+                            android:contentDescription="Blood Report Preview" />
+
+                        <!-- Selected file name (hidden until file selected) -->
+                        <TextView
+                            android:id="@+id/tvBloodReportName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#6B7280"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:ellipsize="middle"
+                            android:layout_marginTop="4dp"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/btnUploadBloodReport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="Upload Photo"
+                            android:textColor="#374151"
+                            android:textSize="11sp"
+                            android:background="@drawable/bg_browse_button"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp"
+                            android:layout_marginTop="10dp"
+                            android:elevation="0dp"
+                            android:stateListAnimator="@null" />
+
+                    </LinearLayout>
+
+                    <!-- Urine Report Upload -->
+                    <LinearLayout
+                        android:id="@+id/layoutUrineReportUpload"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_upload_zone_urine"
+                        android:padding="16dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_water_drop"
+                            android:contentDescription="Urine Report Icon"
+                            app:tint="#6366F1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Urine Report"
+                            android:textColor="#374151"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="JPG, PNG, PDF · 10MB"
+                            android:textColor="#9CA3AF"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:layout_marginTop="2dp" />
+
+                        <!-- Preview thumbnail (hidden until file selected) -->
+                        <ImageView
+                            android:id="@+id/imgUrineReportPreview"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="8dp"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/bg_input_field"
+                            android:visibility="gone"
+                            android:contentDescription="Urine Report Preview" />
+
+                        <!-- Selected file name (hidden until file selected) -->
+                        <TextView
+                            android:id="@+id/tvUrineReportName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#6B7280"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:ellipsize="middle"
+                            android:layout_marginTop="4dp"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/btnUploadUrineReport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="Upload Photo"
+                            android:textColor="#374151"
+                            android:textSize="11sp"
+                            android:background="@drawable/bg_browse_button"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp"
+                            android:layout_marginTop="10dp"
+                            android:elevation="0dp"
+                            android:stateListAnimator="@null" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <!-- END [NEW] Report Photo Uploads -->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Spacer -->
+        <View android:layout_width="match_parent" android:layout_height="20dp" />
+
+        <!-- ─────────────────────────────────────── -->
+        <!-- BOTTOM BUTTONS: Cancel + Create Record  -->
+        <!-- ─────────────────────────────────────── -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="24dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Cancel"
+                android:textColor="#374151"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:background="@drawable/bg_cancel_button"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:drawableStart="@drawable/ic_close"
+                android:drawablePadding="6dp" />
+
+            <Button
+                android:id="@+id/btnCreateRecord"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Create Record"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:background="@drawable/bg_create_button"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="6dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
