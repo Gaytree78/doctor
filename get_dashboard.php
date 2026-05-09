@@ -21,33 +21,24 @@ $recentResult = $conn->query("
         p.id,
         p.name,
         p.created_at,
-        -- ✅ Latest visit diagnosis, fallback to registration diagnosis
         COALESCE(
             (SELECT diagnosis FROM patient_visits 
              WHERE patient_id = p.id 
-             AND diagnosis IS NOT NULL 
-             AND diagnosis != ''
-             ORDER BY visit_date DESC, id DESC 
-             LIMIT 1),
-            pm.diagnosis
+             AND diagnosis IS NOT NULL AND diagnosis != ''
+             ORDER BY visit_date DESC, id DESC LIMIT 1),
+            p.diagnosis
         ) AS latest_diagnosis,
-        -- ✅ Latest visit symptoms, fallback to registration symptoms
         COALESCE(
             (SELECT symptoms FROM patient_visits 
              WHERE patient_id = p.id 
-             AND symptoms IS NOT NULL 
-             AND symptoms != ''
-             ORDER BY visit_date DESC, id DESC 
-             LIMIT 1),
-            pm.symptoms
+             AND symptoms IS NOT NULL AND symptoms != ''
+             ORDER BY visit_date DESC, id DESC LIMIT 1),
+            p.symptoms
         ) AS latest_symptoms,
-        -- ✅ Latest visit date
         (SELECT visit_date FROM patient_visits 
          WHERE patient_id = p.id 
-         ORDER BY visit_date DESC, id DESC 
-         LIMIT 1) AS last_visit_date
+         ORDER BY visit_date DESC, id DESC LIMIT 1) AS last_visit_date
     FROM patients p
-    LEFT JOIN patient_medical pm ON p.id = pm.patient_id
     ORDER BY p.created_at DESC
     LIMIT 10
 ");
