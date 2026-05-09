@@ -15,13 +15,11 @@ $like = "%" . $search . "%";
 
 $sql = $conn->prepare("
     SELECT p.id, p.name, p.age, p.gender,
-           c.mobile,
-           m.diagnosis
+           p.mobile,
+           p.diagnosis
     FROM patients p
-    LEFT JOIN patient_contact c ON p.id = c.patient_id
-    LEFT JOIN patient_medical m ON p.id = m.patient_id
     WHERE p.name LIKE ?
-    OR c.mobile LIKE ?
+    OR p.mobile LIKE ?
     ORDER BY p.id DESC
 ");
 
